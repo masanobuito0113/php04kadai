@@ -31,28 +31,28 @@ if ($status === false) {
 $error = $stmt->errorInfo();
 exit('SQLError:' . print_r($error, true));
 } else {
-$result = $stmt->fetch();
-}
-
+    while ($r = $stmt->fetch(PDO::FETCH_ASSOC)) {
 
 $view .= '<p>';
-$view .= '<img src="'. $result['imagepath'] . '" maxwidth="400" height="400">'
-. '<br>'. 'PLACE：' . $result['place'] . '<br>' . 'FOOD：' . $result['food']. '<br>' . 'COMMENT：' . $result['comment'];
+$view .= '<img src="'. $r['imagepath'] . '" maxwidth="400" height="400">'
+. '<br>'. '<strong>'.'PLACE：'.'</strong>' . $r['place'] . '<br>' . '<strong>'.'FOOD：'.'</strong>' . $r['food']. '<br>' . '<strong>'.'COMMENT：'.'</strong>' . $r['comment'];
 $view .= '</p>';
-
+// var_dump($_SESSION['kanri_flg'])
+if ($_SESSION['kanri_flg'] === 1){
+$view .=  '<a href="detail.php?id=' . $r['id'] .'">';
+$view .= '[<i class="glyphicon glyphicon-remove"></i>更新]';
+$view .= '</a>';
+$view .=  '<a href="delate.php?id=' . $r['id'] .'">';
+$view .= '[<i class="glyphicon glyphicon-remove"></i>削除]';
+$view .= '</a>';
+}
+}}
 ?>
 
 <div class="container">
     <div class="row">
         <div class="container jumbotron"><?= $view ?>
-            <?php if (loginCheck()) : ?>
-                <div class=" mb-1">
-                    <a href="detail.php?id=<?php echo $result['id']; ?>" class="btn btn-primary">更新</a>
-                </div>
-                <div class="mb-1">
-                    <a href="delete.php?id=<?php echo $result['id']; ?>" class="btn btn-primary">削除</a>
-                </div>
-            <?php endif; ?>
+        
         </div>
     </div>
 </div>
@@ -76,4 +76,4 @@ $view .= '</p>';
 
 </body>
 
-</html>
+</>

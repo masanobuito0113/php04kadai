@@ -37,6 +37,9 @@
                 <li class="nav-item">
                     <a class="nav-link" href="#">お問い合わせ(停止中)</a>
                 </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="logout.php">ログアウト</a>
+                </li>
             </ul>
             </div>
         </nav>

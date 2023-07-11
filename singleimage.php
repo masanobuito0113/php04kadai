@@ -42,19 +42,34 @@ $view .= '</p>';
 
 ?>
 
- <div class="container">
+<div class="container">
+    <div class="row">
+        <div class="container jumbotron"><?= $view ?>
+            <?php if (loginCheck()) : ?>
+                <div class=" mb-1">
+                    <a href="detail.php?id=<?php echo $result['id']; ?>" class="btn btn-primary">更新</a>
+                </div>
+                <div class="mb-1">
+                    <a href="delete.php?id=<?php echo $result['id']; ?>" class="btn btn-primary">削除</a>
+                </div>
+            <?php endif; ?>
+        </div>
+    </div>
+</div>
+
+<!-- <div class="container">
     <div class="row">
         <div class="container jumbotron"><?= $view ?>
             <div class=" mb-1">
-            <a href="detail.php?id=<?php echo $result['id']; ?>" class="btn btn-primary">更新</a>
+                        <a href="detail.php?id=<?php echo $result['id']; ?>" class="btn btn-primary">更新</a>
             </div>
             <div class="mb-1">
                 <a href="delate.php?id=<?php echo $result['id']; ?>" class="btn btn-primary">削除</a>
-             </div>
+            </div>
 
+        </div>
     </div>
-</div>
-    </div>
+</div> -->
 
         <a class="navbar-brand" href="index.php">データ登録へもどる</a>
 
